@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<div class=" m-auto">
+    <form method="POST" class="">
+        {# This hidden_tag is a CSRF security feature. #}
+        {{ form.hidden_tag() }}
+        <table class="mt-5 mb-5">
+            <tr class="mb-3 -3">
+                <td>{{ form.org.label }}</td>
+                <td>{{ form.org() }}</td>
+            </tr>
+            <tr class="mb-3">
+                <td>{{ form.startdate.label }}</td>
+                <td>{{ form.startdate() }}</td>
+            </tr>
+            <tr class="mb-3">
+                <td>{{ form.enddate.label }}</td>
+                <td>{{ form.enddate() }}</td>
+            </tr>
+            <tr class="mb-3">
+                <td>{{ form.title.label }}</td>
+                <td>{{ form.title() }}</td>
+            </tr>
+            <tr class="mb-3">
+                <td>{{ form.description.label }}</td>
+                <td>{{ form.description() }}</td>
+            </tr>
+            <tr class="mb-3">
+                <td>{{ form.info_type.label }}</td>
+                <td>{{ form.info_type() }}</td>
+            </tr>
+            <tr class="mb-3">
+                <td colspan="2">
+                    <div class="text-center mt-3">
+                        {{ form.submitform() }} 
+                    </div>
+                    
+                </td>
+            </tr>
+        </table>
+        
+    </form>
+</div>
+
+
+
+
+{% endblock %}

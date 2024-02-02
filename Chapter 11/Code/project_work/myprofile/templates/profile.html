@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+    <header>
+        <h1 class="resume_title">
+            <b>ISHANA GHOSH</b>
+        </h1>
+
+    </header>
+
+
+    <br><br>
+    <div class="skills">
+        <div class="exp">
+            <h2 class="skill_title">
+                WORK EXPERIENCE
+            </h2>
+            {% for details in details if details.info_type=='Work Experience' %}
+            <h3 class="exp_title">
+                {{details.title}}
+            </h3>
+            <hr>
+            <h5 class="org_name">
+                {{details.org}}
+            </h5>
+            <h5 class="org_date">
+                {{details.startdate}} to {{details.enddate}}
+            </h5>
+            <ul>
+                <li>{{details.description}}</li>
+
+            </ul>
+            {% endfor %}
+
+        </div>
+        <div class="education">
+            <h2 class="skill_title">
+                EDUCATION BACKGROUND
+            </h2>
+            {% for details in details if details.info_type=='Education' %}
+            <h3 class="exp_title">
+                {{details.title}}
+            </h3>
+            <hr>
+            <h5 class="org_name">
+                {{details.org}}
+            </h5>
+            <h5 class="org_date">
+                {{details.startdate}} to {{details.enddate}}
+            </h5>
+            <ul>
+                <li>{{details.description}}</li>
+
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
+    <br>
+    <div class="projects">
+        <div class="expert">
+            <h2 class="skill_title">
+                EXPERTISE
+            </h2>
+            {% for details in details if details.info_type=='Expertise' %}
+            <h3 class="exp_title">
+                {{details.title}}
+            </h3>
+            <hr>
+            <h5 class="org_name">
+                {{details.org}}
+            </h5>
+            <h5 class="org_date">
+                {{details.startdate}} to {{details.enddate}}
+            </h5>
+            <ul>
+                <li>{{details.description}}</li>
+
+            </ul>
+            {% endfor %}
+        </div>
+
+        <div class="project_details">
+            <h2 class="skill_title">
+                PROJECTS
+            </h2>
+            {% for details in details if details.info_type=='Project' %}
+            <h3 class="exp_title">
+                {{details.title}}
+            </h3>
+            <hr>
+            <h5 class="org_name">
+                {{details.org}}
+            </h5>
+            <h5 class="org_date">
+                {{details.startdate}} to {{details.enddate}}
+            </h5>
+            <ul>
+                <li>{{details.description}}</li>
+
+            </ul>
+            {% endfor %}
+        </div>
+</div>  
+
+{% endblock content %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <header>
+        <h1 class="resume_title">
+            <b>UPDATE PROFILE DATA FOR ISHANA GHOSH</b>
+        </h1>
+        <br>
+        <img src="" alt="">
+    </header>
+
+
+    <br><br>
+    <div class="skills" style="width: 100%;">
+        <div class="exp" style="width: 100%;">
+            <h2 class="skill_title">
+                CURRENT DATA IN THE DATABASE
+            </h2>
+            <form method="POST" action="/editdetails">
+                <table  style="width:100%">
+                    <tr class="table-primary">
+                        <td> <b>SELECT</b></td>
+                        <td> <b>TITLE</b></td>
+                        <td> <b>ORGANIZATION</b></td>
+                        <td> <b>START DATE</b></td>
+                        <td> <b>END DATE</b></td>
+                        <td> <b>DESCRIPTION</b></td>
+                    </tr>
+                    {% for details in details %}
+                    <tr>
+                        <td> <input value="{{details.id}}" id="type_radio_{{details.id}}" name="type_radio" type="radio" /></td>
+                        <td> {{details.title}}</td>
+                        <td>{{details.org}}</td>
+                        <td>{{details.startdate}}</td>
+                        <td>{{details.enddate}}</td>
+                        <td>{{details.description}}</td>
+                    </tr>
+                    {% endfor %}
+                    
+                </table>
+                <div class="text-center mt-5">
+                    <input style="background-color: brown; padding: 6px 15px; border:none; color:#fff;" type="submit" name="deletebtn" value="DELETE">
+                </div>
+            </form>
+        </div> 
+    </div>
+        <!-- <button type="submit" class="button" name="delete" formaction="editform">DELETE</button>
+        <button type="submit" class="button" name="cancel" formaction="profile">CANCEL</button> -->
+
+<br><br><br><br><br>
+{% endblock content %}

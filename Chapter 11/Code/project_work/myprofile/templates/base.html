@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="../static/profile.css">
+
+
+    <title>Welcome to My Webpage</title>
+    <style>
+       ul#remove {
+            list-style-type: none;
+            
+        }
+      #navbarForMob{
+        display: none;
+        background-color: transparent;
+        border: none;
+      }
+      @media only screen and (max-width: 1000px) {
+        #navbarForPc {
+          display:none;
+        }
+        #navbarForMob{
+          display:block;
+        }
+      }
+    </style>
+</head>
+<body>
+<header class="p-3 text-bg-dark" style="height:77px;">
+  <div class="container" id="navbarForPc">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+
+      </a>
+
+
+    <div id="navigation-bar" class="nav-bar">
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-end mb-md-0">
+        <li><a href="{{ url_for('core.index') }}" class="nav-link px-2 text-white">Home&nbsp;&nbsp;  |</a></li>
+        <li><a href="{{ url_for('core.profile') }}" class="nav-link px-2 text-white">Profile &nbsp;&nbsp; |</a></li>
+        <li><a href="{{ url_for('core.activities') }}" class="nav-link px-2 text-white">Extra Curriculars &nbsp;&nbsp; |</a></li>
+          <li><a href="{{ url_for('core.goals') }}" class="nav-link px-2 text-white">Future Goals &nbsp;&nbsp; |</a></li>
+        <li><a href="{{ url_for('core.alltestimonials') }}" class="nav-link px-2 text-white">Testimonials &nbsp;&nbsp; |</a></li>
+        {% if current_user.is_authenticated %}
+
+        <li ><a  href="{{ url_for('users.logout') }}" class="nav-link px-2 text-white">Log Out &nbsp;&nbsp; |</a></li>
+        <li><a href="{{ url_for('users.account') }}" class="nav-link px-2 text-white">Account &nbsp;&nbsp; |</a></li>
+        <li><a href="{{ url_for('testimonials.create_post') }}" class="nav-link px-2 text-white">Update &nbsp;&nbsp; |</a></li>
+
+        {% else %}
+        <li><a href="{{ url_for('users.login') }}" class="nav-link px-2 text-white">Log In &nbsp;&nbsp; |</a></li>
+        <li><a href="{{ url_for('users.register') }}" class="nav-link px-2 text-white">Register &nbsp; &nbsp;|</a></li>
+        {% endif %}
+
+      </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container" id="navbarForMob">
+    <div class="row ">
+      <div class="text-end">
+        <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><i class="bi bi-list text-white fs-2"></i></button>
+      </div>
+      
+    </div>
+  </div>
+</header>
+<br><br><br>
+<div class="container">
+    <div class="top-section">
+        <section class="content"><b>
+            <h1 class="title">Personal Digital Portfolio: CMT120 </h1></b>
+        </section>
+    </div>
+  {% block content %}
+
+  {% endblock %}
+</div>
+
+
+<br><br><br>
+<footer>
+        <div class="top_foot">
+            <div class="foot-left">
+                <h1>
+                    ISHANA GHOSH
+                </h1>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam nobis excepturi distinctio beatae
+                    iusto! Fuga, molestiae dolorem molestias nihil odio corporis nobis commodi ea. Officiis omnis maxime
+                    quibusdam voluptatem laudantium.</p>
+            </div>
+            <div class="foot-right">
+                <div class="main_menu">
+                    <ul><h4><b>Important Links</b></h4>
+                        <li><a href="home">Home</a></li>
+                        {% if current_user.is_authenticated %}
+
+        <li ><a  href="{{ url_for('users.logout') }}">Log Out</a></li>
+        <li><a href="{{ url_for('users.account') }}">Account</a></li>
+
+        {% else %}
+        <li><a href="{{ url_for('users.login') }}">Log In</a></li>
+        <li><a href="{{ url_for('users.register') }}">Register</a></li>
+        {% endif %}
+                    </ul>
+                </div>
+                <div class="about_menu">
+                    <ul><h4><b>About Me</b></h4>
+                    <li><a href="profile">View Profile</a></li>
+                    <li><a href="testimonials">Testimonials</a></li>
+                    <li><a href="goals">Future Goals</a></li>
+                    <li><a href="activities">Extra Curriculars</a></li>
+                </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+
+    </div>
+
+        <hr>
+        <div class="bottom_foot">
+            <h5 class="text-center">
+               <marque>Copyright: Ishana Ghosh       Contact: ishana@ishanaghosh.com</marque>
+            </h5>
+        </div>
+    </footer>
+    <!--hamburger menu-->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+
+        <div class="ms-3 mt-3">
+          <ul id="remove">
+            <li class="mb-3"><a href="{{ url_for('core.index') }}" class="nav-link px-2 fs-4">Home&nbsp;&nbsp; </a></li>
+            <li class="mb-3"><a href="{{ url_for('core.profile') }}" class="nav-link px-2 fs-4">Profile &nbsp;&nbsp; </a></li>
+            <li class="mb-3"><a href="{{ url_for('core.activities') }}" class="nav-link px-2 fs-4">Extra Curriculars &nbsp;&nbsp; </a></li>
+              <li class="mb-3"><a href="{{ url_for('core.goals') }}" class="nav-link px-2 fs-4">Future Goals &nbsp;&nbsp; </a></li>
+            <li class="mb-3"><a href="{{ url_for('core.alltestimonials') }}" class="nav-link px-2 fs-4">Testimonials &nbsp;&nbsp; </a></li>
+            {% if current_user.is_authenticated %}
+
+            <li class="mb-3"><a  href="{{ url_for('users.logout') }}" class="nav-link px-2 fs-4">Log Out &nbsp;&nbsp; </a></li>
+            <li class="mb-3"><a href="{{ url_for('users.account') }}" class="nav-link px-2 fs-4">Account &nbsp;&nbsp; </a></li>
+            <li class="mb-3"><a href="{{ url_for('testimonials.create_post') }}" class="nav-link px-2 fs-4">Update &nbsp;&nbsp; </a></li>
+
+            {% else %}
+            <li class="mb-3"><a href="{{ url_for('users.login') }}" class="nav-link px-2 fs-4">Log In &nbsp;&nbsp; </a></li>
+            <li class="mb-3"><a href="{{ url_for('users.register') }}" class="nav-link px-2 fs-4">Register &nbsp; &nbsp;</a></li>
+            {% endif %}
+
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+    <!--end hamburger menu-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+</html>
